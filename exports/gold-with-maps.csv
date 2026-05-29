@@ -1,0 +1,116 @@
+state,city,full_address,price,atmb_link,gmaps_link
+AL,Birmingham,"120 19th Street North, Birmingham, AL 35203",$39.00,https://www.anytimemailbox.com/s/birmingham-120-19th-street-north,https://www.google.com/maps/place/120+19th+Street+North%2C+Birmingham%2C+AL+35203
+AR,Bentonville,"1200 SE 14th St, Bentonville, AR 72712",$11.99,https://www.anytimemailbox.com/s/bentonville-1200-se-14th-street,https://www.google.com/maps/place/1200+SE+14th+St%2C+Bentonville%2C+AR+72712
+AZ,Gilbert,"1525 S. Higley Rd, Gilbert, AZ 85296",$16.99,https://www.anytimemailbox.com/s/gilbert-1525-s-higley-road,https://www.google.com/maps/place/1525+S.+Higley+Rd%2C+Gilbert%2C+AZ+85296
+CA,Anaheim,"201 E Center St, Anaheim, CA 92805",$7.99,https://www.anytimemailbox.com/s/anaheim-201-e-center-street,https://www.google.com/maps/place/201+E+Center+St%2C+Anaheim%2C+CA+92805
+CA,Irvine,"92 Corporate Park, Irvine, CA 92606",$8.89,https://www.anytimemailbox.com/s/irvine-92-corporate-park,https://www.google.com/maps/place/92+Corporate+Park%2C+Irvine%2C+CA+92606
+CA,Irvine,"17595 Harvard Ave, Irvine, CA 92614",$8.99,https://www.anytimemailbox.com/s/irvine-17595-harvard-avenue,https://www.google.com/maps/place/17595+Harvard+Ave%2C+Irvine%2C+CA+92614
+CA,Arcadia,"411 E Huntington Dr, Arcadia, CA 91006",$9.99,https://www.anytimemailbox.com/s/arcadia-411-e-huntington-drive,https://www.google.com/maps/place/411+E+Huntington+Dr%2C+Arcadia%2C+CA+91006
+CA,Fontana,"14050 Cherry Ave, Fontana, CA 92337",$9.99,https://www.anytimemailbox.com/s/fontana-14050-cherry-avenue,https://www.google.com/maps/place/14050+Cherry+Ave%2C+Fontana%2C+CA+92337
+CA,Riverside,"19510 Van Buren Blvd, Riverside, CA 92508",$9.99,https://www.anytimemailbox.com/s/riverside-19510-van-buren-blvd,https://www.google.com/maps/place/19510+Van+Buren+Blvd%2C+Riverside%2C+CA+92508
+CA,Temecula,"30650 Rancho California Rd, Temecula, CA 92591",$9.99,https://www.anytimemailbox.com/s/temecula-30650-rancho-california-road,https://www.google.com/maps/place/30650+Rancho+California+Rd%2C+Temecula%2C+CA+92591
+CA,Vista,"770 Sycamore Ave, Vista, CA 92083",$9.99,https://www.anytimemailbox.com/s/vista-770-sycamore-avenue,https://www.google.com/maps/place/770+Sycamore+Ave%2C+Vista%2C+CA+92083
+CA,Arcadia,"145 E Duarte Rd, Arcadia, CA 91006",$11.99,https://www.anytimemailbox.com/s/arcadia-145-e-duarte-road,https://www.google.com/maps/place/145+E+Duarte+Rd%2C+Arcadia%2C+CA+91006
+CA,Bakersfield,"6077 Coffee Rd, Bakersfield, CA 93308",$14.99,https://www.anytimemailbox.com/s/bakersfield-6077-coffee-road,https://www.google.com/maps/place/6077+Coffee+Rd%2C+Bakersfield%2C+CA+93308
+CA,"La Jolla","7514 Girard Ave, La Jolla, CA 92037",$14.99,https://www.anytimemailbox.com/s/la-jolla-7514-girard-ave,https://www.google.com/maps/place/7514+Girard+Ave%2C+La+Jolla%2C+CA+92037
+CA,"San Diego","1501 India St, San Diego, CA 92101",$14.99,https://www.anytimemailbox.com/s/san-diego-1501-india-street,https://www.google.com/maps/place/1501+India+St%2C+San+Diego%2C+CA+92101
+CA,"San Diego","2907 Shelter Island Drive, San Diego, CA 92106",$15.99,https://www.anytimemailbox.com/s/san-diego-2907-shelter-island-drive,https://www.google.com/maps/place/2907+Shelter+Island+Drive%2C+San+Diego%2C+CA+92106
+CA,"San Diego","1111 6th Ave, San Diego, CA 92101",$19.99,https://www.anytimemailbox.com/s/san-diego-1111-6th-ave,https://www.google.com/maps/place/1111+6th+Ave%2C+San+Diego%2C+CA+92101
+CO,Denver,"2000 S. Colorado Blvd., Denver, CO 80222",$31.49,https://www.anytimemailbox.com/s/denver-2000-s-colorado-blvd,https://www.google.com/maps/place/2000+S.+Colorado+Blvd.%2C+Denver%2C+CO+80222
+DC,Washington,"1930 18th St NW, Washington, DC 20009",$14.95,https://www.anytimemailbox.com/s/washington-1930-18th-street-nw,https://www.google.com/maps/place/1930+18th+St+NW%2C+Washington%2C+DC+20009
+DC,Washington,"6218 Georgia Ave N.W., Washington, DC 20011",$14.99,https://www.anytimemailbox.com/s/washington-6218-georgia-avenue-nw,https://www.google.com/maps/place/6218+Georgia+Ave+N.W.%2C+Washington%2C+DC+20011
+DE,Wilmington,"1401 Pennsylvania Ave, Wilmington, DE 19806",$8.99,https://www.anytimemailbox.com/s/wilmington-1401-pennsylvania-ave,https://www.google.com/maps/place/1401+Pennsylvania+Ave%2C+Wilmington%2C+DE+19806
+FL,"Boca Raton","8903 Glades Rd, Boca Raton, FL 33434",$7.99,https://www.anytimemailbox.com/s/boca-raton-8903-glades-road,https://www.google.com/maps/place/8903+Glades+Rd%2C+Boca+Raton%2C+FL+33434
+FL,"Lake Worth","8927 Hypoluxo Rd, Lake Worth, FL 33467",$9.99,https://www.anytimemailbox.com/s/lake-worth-8927-hypoluxo-road,https://www.google.com/maps/place/8927+Hypoluxo+Rd%2C+Lake+Worth%2C+FL+33467
+FL,"Port Charlotte","2200 Kings Highway, Port Charlotte, FL 33980",$9.99,https://www.anytimemailbox.com/s/port-charlotte-2200-kings-highway,https://www.google.com/maps/place/2200+Kings+Highway%2C+Port+Charlotte%2C+FL+33980
+FL,"Port Charlotte","4410 Warren Ave, Port Charlotte, FL 33953",$9.99,https://www.anytimemailbox.com/s/port-charlotte-4410-warren-avenue,https://www.google.com/maps/place/4410+Warren+Ave%2C+Port+Charlotte%2C+FL+33953
+FL,Bradenton,"1201 6th Ave W, Bradenton, FL 34205",$10.00,https://www.anytimemailbox.com/s/bradenton-1201-6th-avenue-west,https://www.google.com/maps/place/1201+6th+Ave+W%2C+Bradenton%2C+FL+34205
+FL,Miami,"14261 SW 120th St, Miami, FL 33186",$11.99,https://www.anytimemailbox.com/s/miami-14261-sw-120th-street,https://www.google.com/maps/place/14261+SW+120th+St%2C+Miami%2C+FL+33186
+FL,Ocala,"1202 SW 17th St, Ocala, FL 34471",$11.99,https://www.anytimemailbox.com/s/ocala-1202-sw-17th-street,https://www.google.com/maps/place/1202+SW+17th+St%2C+Ocala%2C+FL+34471
+FL,Largo,"7381 114th Ave, Largo, FL 33773",$13.99,https://www.anytimemailbox.com/s/largo-7381-114th-avenue,https://www.google.com/maps/place/7381+114th+Ave%2C+Largo%2C+FL+33773
+FL,"Fort Myers","13300 South Cleveland Ave, Fort Myers, FL 33907",$16.99,https://www.anytimemailbox.com/s/fort-myers-13300-south-cleveland-avenue,https://www.google.com/maps/place/13300+South+Cleveland+Ave%2C+Fort+Myers%2C+FL+33907
+FL,"Bonita Springs","3250 Bonita Beach Rd, Bonita Springs, FL 34134",$19.99,https://www.anytimemailbox.com/s/bonita-springs-3250-bonita-beach-road,https://www.google.com/maps/place/3250+Bonita+Beach+Rd%2C+Bonita+Springs%2C+FL+34134
+FL,Sunrise,"4300 N University Dr, Sunrise, FL 33351",$19.99,https://www.anytimemailbox.com/s/sunrise-4300-n-university-drive,https://www.google.com/maps/place/4300+N+University+Dr%2C+Sunrise%2C+FL+33351
+FL,Doral,"8400 NW 33rd St, Doral, FL 33122",$29.99,https://www.anytimemailbox.com/s/doral-8400-nw-33rd-street,https://www.google.com/maps/place/8400+NW+33rd+St%2C+Doral%2C+FL+33122
+FL,"Palm Beach Gardens","4440 PGA Blvd, Palm Beach Gardens, FL 33410",$29.99,https://www.anytimemailbox.com/s/palm-beach-gardens-4440-pga-blvd,https://www.google.com/maps/place/4440+PGA+Blvd%2C+Palm+Beach+Gardens%2C+FL+33410
+FL,"West Palm Beach","700 S Rosemary Ave, West Palm Beach, FL 33401",$69.00,https://www.anytimemailbox.com/s/west-palm-beach-700-s-rosemary-ave,https://www.google.com/maps/place/700+S+Rosemary+Ave%2C+West+Palm+Beach%2C+FL+33401
+GA,Columbus,"4519 Woodruff Rd, Columbus, GA 31904",$9.99,https://www.anytimemailbox.com/s/columbus-4519-woodruff-road,https://www.google.com/maps/place/4519+Woodruff+Rd%2C+Columbus%2C+GA+31904
+GA,Morrow,"2250 Lake Harbin Rd, Morrow, GA 30260",$9.99,https://www.anytimemailbox.com/s/morrow-2250-lake-harbin-road,https://www.google.com/maps/place/2250+Lake+Harbin+Rd%2C+Morrow%2C+GA+30260
+GA,Atlanta,"1700 Northside Drive, Atlanta, GA 30318",$11.99,https://www.anytimemailbox.com/s/atlanta-1700-northside-drive,https://www.google.com/maps/place/1700+Northside+Drive%2C+Atlanta%2C+GA+30318
+GA,Atlanta,"300 Peachtree St NE, Atlanta, GA 30308",$12.99,https://www.anytimemailbox.com/s/atlanta-300-peachtree-street-ne,https://www.google.com/maps/place/300+Peachtree+St+NE%2C+Atlanta%2C+GA+30308
+GA,Atlanta,"245 N Highland Ave NE, Atlanta, GA 30307",$22.99,https://www.anytimemailbox.com/s/atlanta-245-n-highland-ave,https://www.google.com/maps/place/245+N+Highland+Ave+NE%2C+Atlanta%2C+GA+30307
+IL,Westmont,"36 North Cass Ave, Westmont, IL 60559",$9.99,https://www.anytimemailbox.com/s/westmont-36-north-cass-ave,https://www.google.com/maps/place/36+North+Cass+Ave%2C+Westmont%2C+IL+60559
+IL,"Tinley Park","16649 Oak Park Ave, Tinley Park, IL 60477",$11.99,https://www.anytimemailbox.com/s/tinley-park-16649-oak-park-ave,https://www.google.com/maps/place/16649+Oak+Park+Ave%2C+Tinley+Park%2C+IL+60477
+IL,Chicago,"6641 W Belmont Ave, Chicago, IL 60634",$12.99,https://www.anytimemailbox.com/s/chicago-6641-belmont-avenue,https://www.google.com/maps/place/6641+W+Belmont+Ave%2C+Chicago%2C+IL+60634
+IL,Chicago,"211 W Wacker Dr, Chicago, IL 60606",$14.95,https://www.anytimemailbox.com/s/chicago-211-w-wacker-drive-suite-120,https://www.google.com/maps/place/211+W+Wacker+Dr%2C+Chicago%2C+IL+60606
+IL,Chicago,"3838 N Ravenswood Ave, Chicago, IL 60613",$19.99,https://www.anytimemailbox.com/s/chicago-3838-n-ravenswood-ave,https://www.google.com/maps/place/3838+N+Ravenswood+Ave%2C+Chicago%2C+IL+60613
+IL,Chicago,"211 W Wacker Dr, Chicago, IL 60606",$19.99,https://www.anytimemailbox.com/s/chicago-211-w-wacker-drive-suite-300,https://www.google.com/maps/place/211+W+Wacker+Dr%2C+Chicago%2C+IL+60606
+IL,Danville,"2 E Main St, Danville, IL 61832",$24.99,https://www.anytimemailbox.com/s/danville-2-e-main-street,https://www.google.com/maps/place/2+E+Main+St%2C+Danville%2C+IL+61832
+IL,Deerfield,"570 Lake Cook Rd, Deerfield, IL 60015",$64.99,https://www.anytimemailbox.com/s/deerfield-570-lake-cook-road,https://www.google.com/maps/place/570+Lake+Cook+Rd%2C+Deerfield%2C+IL+60015
+LA,"Baton Rouge","440 3rd St, Baton Rouge, LA 70802",$39.00,https://www.anytimemailbox.com/s/baton-rouge-440-3rd-street,https://www.google.com/maps/place/440+3rd+St%2C+Baton+Rouge%2C+LA+70802
+MA,Worcester,"100 Front St, Worcester, MA 01608",$49.99,https://www.anytimemailbox.com/s/worcester-100-front-street,https://www.google.com/maps/place/100+Front+St%2C+Worcester%2C+MA+01608
+MD,"Linthicum Heights","1190 Winterson Rd, Linthicum Heights, MD 21090",$9.99,https://www.anytimemailbox.com/s/linthicum-heights-1190-winterson-road,https://www.google.com/maps/place/1190+Winterson+Rd%2C+Linthicum+Heights%2C+MD+21090
+MD,Baltimore,"1400 W. Lombard Street, Baltimore, MD 21223",$10.99,https://www.anytimemailbox.com/s/baltimore-1400-w-lombard-street,https://www.google.com/maps/place/1400+W.+Lombard+Street%2C+Baltimore%2C+MD+21223
+MO,"Platte City","1302 Platte Falls Rd, Platte City, MO 64079",$9.99,https://www.anytimemailbox.com/s/platte-city-1302-platte-falls-road,https://www.google.com/maps/place/1302+Platte+Falls+Rd%2C+Platte+City%2C+MO+64079
+MO,"Kansas City","215 W Pershing Rd, Kansas City, MO 64108",$14.99,https://www.anytimemailbox.com/s/kansas-city-215-w-pershing-road,https://www.google.com/maps/place/215+W+Pershing+Rd%2C+Kansas+City%2C+MO+64108
+MS,Madison,"272 Calhoun Station Pkwy, Madison, MS 39110",$17.99,https://www.anytimemailbox.com/s/gluckstadt-272-calhoun-station-parkway,https://www.google.com/maps/place/272+Calhoun+Station+Pkwy%2C+Madison%2C+MS+39110
+MT,Bozeman,"1800 S 22nd Ave, Bozeman, MT 59718",$14.99,https://www.anytimemailbox.com/s/bozeman-1800-s-22nd-avenue,https://www.google.com/maps/place/1800+S+22nd+Ave%2C+Bozeman%2C+MT+59718
+MT,Bozeman,"40 Spanish Peak Dr, Bozeman, MT 59718",$14.99,https://www.anytimemailbox.com/s/bozeman-40-spanish-peak-drive,https://www.google.com/maps/place/40+Spanish+Peak+Dr%2C+Bozeman%2C+MT+59718
+NC,Archdale,"313 Trindale Rd, Archdale, NC 27263",$9.99,https://www.anytimemailbox.com/s/archdale-313-trindale-road,https://www.google.com/maps/place/313+Trindale+Rd%2C+Archdale%2C+NC+27263
+NC,Clayton,"63 Sarazen Dr, Clayton, NC 27527",$9.99,https://www.anytimemailbox.com/s/clayton-63-sarazen-drive,https://www.google.com/maps/place/63+Sarazen+Dr%2C+Clayton%2C+NC+27527
+NC,Leland,"1108 New Pointe Blvd, Leland, NC 28451",$9.99,https://www.anytimemailbox.com/s/leland-1108-new-pointe-blvd,https://www.google.com/maps/place/1108+New+Pointe+Blvd%2C+Leland%2C+NC+28451
+NC,Asheville,"125 S Lexington Ave, Asheville, NC 28801",$12.99,https://www.anytimemailbox.com/s/asheville-125-s-lexington-avenue,https://www.google.com/maps/place/125+S+Lexington+Ave%2C+Asheville%2C+NC+28801
+NH,Laconia,"51 Elm St, Laconia, NH 03246",$39.00,https://www.anytimemailbox.com/s/laconia-51-elm-street,https://www.google.com/maps/place/51+Elm+St%2C+Laconia%2C+NH+03246
+NJ,Robbinsville,"2360 Route 33, Robbinsville, NJ 08691",$9.99,https://www.anytimemailbox.com/s/robbinsville-2360-route-33,https://www.google.com/maps/place/2360+Route+33%2C+Robbinsville%2C+NJ+08691
+NJ,"Short Hills","514 Millburn Ave, Short Hills, NJ 07078",$13.99,https://www.anytimemailbox.com/s/short-hills-514-millburn-avenue,https://www.google.com/maps/place/514+Millburn+Ave%2C+Short+Hills%2C+NJ+07078
+NJ,"North Brunswick","643 Georges Rd, North Brunswick, NJ 08902",$14.99,https://www.anytimemailbox.com/s/north-brunswick-643-georges-rd,https://www.google.com/maps/place/643+Georges+Rd%2C+North+Brunswick%2C+NJ+08902
+NJ,Elizabeth,"1077 North Ave, Elizabeth, NJ 07201",$19.99,https://www.anytimemailbox.com/s/elizabeth-1077-north-avenue,https://www.google.com/maps/place/1077+North+Ave%2C+Elizabeth%2C+NJ+07201
+NJ,Matawan,"100 Matawan Rd, Matawan, NJ 07747",$19.99,https://www.anytimemailbox.com/s/matawan-100-matawan-road,https://www.google.com/maps/place/100+Matawan+Rd%2C+Matawan%2C+NJ+07747
+NY,"Port Washington","191 Main Street, Port Washington, NY 11050",$8.99,https://www.anytimemailbox.com/s/port-washington-191-main-street,https://www.google.com/maps/place/191+Main+Street%2C+Port+Washington%2C+NY+11050
+NY,Astoria,"2509 Astoria Blvd, Astoria, NY 11102",$9.99,https://www.anytimemailbox.com/s/astoria-2509-astoria-boulevard,https://www.google.com/maps/place/2509+Astoria+Blvd%2C+Astoria%2C+NY+11102
+NY,Brewster,"12 Main St, Brewster, NY 10509",$9.99,https://www.anytimemailbox.com/s/brewster-12-main-street,https://www.google.com/maps/place/12+Main+St%2C+Brewster%2C+NY+10509
+NY,"Little Neck","248-25 Northern Blvd, Little Neck, NY 11362",$9.99,https://www.anytimemailbox.com/s/little-neck-248-25-northern-blvd,https://www.google.com/maps/place/248-25+Northern+Blvd%2C+Little+Neck%2C+NY+11362
+NY,"Long Island City","3164 21st St, Long Island City, NY 11106",$9.99,https://www.anytimemailbox.com/s/long-island-city-3164-21st-street,https://www.google.com/maps/place/3164+21st+St%2C+Long+Island+City%2C+NY+11106
+NY,"New York","1648 Amsterdam Avenue, New York, NY 10031",$9.99,https://www.anytimemailbox.com/s/new-york-1648-amsterdam-avenue,https://www.google.com/maps/place/1648+Amsterdam+Avenue%2C+New+York%2C+NY+10031
+NY,Brooklyn,"697 Grand St, Brooklyn, NY 11211",$11.99,https://www.anytimemailbox.com/s/brooklyn-697-grand-st,https://www.google.com/maps/place/697+Grand+St%2C+Brooklyn%2C+NY+11211
+NY,Brooklyn,"285 Nostrand Ave, Brooklyn, NY 11216",$11.99,https://www.anytimemailbox.com/s/brooklyn-285-nostrand-avenue,https://www.google.com/maps/place/285+Nostrand+Ave%2C+Brooklyn%2C+NY+11216
+NY,Brooklyn,"367 St Marks Ave, Brooklyn, NY 11238",$12.50,https://www.anytimemailbox.com/s/brooklyn-367-st-marks-avenue,https://www.google.com/maps/place/367+St+Marks+Ave%2C+Brooklyn%2C+NY+11238
+NY,Astoria,"2810 23rd Ave, Astoria, NY 11105",$14.99,https://www.anytimemailbox.com/s/astoria-2810-23rd-avenue,https://www.google.com/maps/place/2810+23rd+Ave%2C+Astoria%2C+NY+11105
+NY,Brooklyn,"223 Bedford Ave, Brooklyn, NY 11211",$18.99,https://www.anytimemailbox.com/s/brooklyn-223-bedford-avenue,https://www.google.com/maps/place/223+Bedford+Ave%2C+Brooklyn%2C+NY+11211
+NY,Bronx,"1450 Allerton Ave, Bronx, NY 10469",$19.99,https://www.anytimemailbox.com/s/bronx-1450-allerton-avenue,https://www.google.com/maps/place/1450+Allerton+Ave%2C+Bronx%2C+NY+10469
+NY,Bronx,"1490 Crotona Park E, Bronx, NY 10460",$19.99,https://www.anytimemailbox.com/s/bronx-1490-crotona-park-e,https://www.google.com/maps/place/1490+Crotona+Park+E%2C+Bronx%2C+NY+10460
+NY,Brooklyn,"238 Wilson Ave, Brooklyn, NY 11237",$19.99,https://www.anytimemailbox.com/s/brooklyn-238-wilson-avenue,https://www.google.com/maps/place/238+Wilson+Ave%2C+Brooklyn%2C+NY+11237
+NY,"New York","2196 Third Ave, New York, NY 10035",$24.99,https://www.anytimemailbox.com/s/new-york-2196-third-avenue,https://www.google.com/maps/place/2196+Third+Ave%2C+New+York%2C+NY+10035
+NY,Brooklyn,"495 Henry St, Brooklyn, NY 11231",$33.33,https://www.anytimemailbox.com/s/brooklyn-495a-henry-street,https://www.google.com/maps/place/495+Henry+St%2C+Brooklyn%2C+NY+11231
+NY,"New York","45 Rockefeller Plaza, New York, NY 10111",$49.00,https://www.anytimemailbox.com/s/new-york-rockefeller-center-45-rockefeller-plaza,https://www.google.com/maps/place/45+Rockefeller+Plaza%2C+New+York%2C+NY+10111
+NY,"New York","152 E 118th St, New York, NY 10001",$49.99,https://www.anytimemailbox.com/s/new-york-152-e-118th-st,https://www.google.com/maps/place/152+E+118th+St%2C+New+York%2C+NY+10001
+OH,Dublin,"6605 Longshore Street, Dublin, OH 43017-2774",$19.99,https://www.anytimemailbox.com/s/dublin-6605-longshore-street,https://www.google.com/maps/place/6605+Longshore+Street%2C+Dublin%2C+OH+43017-2774
+OR,Tigard,"16200 SW Pacific Hwy, Tigard, OR 97224",$9.99,https://www.anytimemailbox.com/s/tigard-16200-sw-pacific-highway,https://www.google.com/maps/place/16200+SW+Pacific+Hwy%2C+Tigard%2C+OR+97224
+PA,Philadelphia,"632 N 2nd St, Philadelphia, PA 19123",$10.99,https://www.anytimemailbox.com/s/philadelphia-632-n-2nd-street,https://www.google.com/maps/place/632+N+2nd+St%2C+Philadelphia%2C+PA+19123
+PA,Philadelphia,"5944 Ogontz Ave, Philadelphia, PA 19141",$11.99,https://www.anytimemailbox.com/s/philadelphia-5944-ogontz-ave,https://www.google.com/maps/place/5944+Ogontz+Ave%2C+Philadelphia%2C+PA+19141
+PR,Fajardo,"410 Avenida Montesol, Fajardo, PR 00738",$9.99,https://www.anytimemailbox.com/s/fajardo-410-avenida-montesol,https://www.google.com/maps/place/410+Avenida+Montesol%2C+Fajardo%2C+PR+00738
+SC,"Fort Mill","3160 Hwy 21, Fort Mill, SC 29715",$9.99,https://www.anytimemailbox.com/s/fort-mill-3160-hwy-21,https://www.google.com/maps/place/3160+Hwy+21%2C+Fort+Mill%2C+SC+29715
+TN,Knoxville,"9111 Cross Park Dr, Knoxville, TN 37923",$9.99,https://www.anytimemailbox.com/s/knoxville-9111-cross-park-drive,https://www.google.com/maps/place/9111+Cross+Park+Dr%2C+Knoxville%2C+TN+37923
+TX,Allen,"1314 W McDermott Dr, Allen, TX 75013",$9.98,https://www.anytimemailbox.com/s/allen-1314-w-mcdermott-drive,https://www.google.com/maps/place/1314+W+McDermott+Dr%2C+Allen%2C+TX+75013
+TX,Houston,"10780 Westview Dr,, Houston, TX 77043",$9.99,https://www.anytimemailbox.com/s/houston-10780-westview-drive,https://www.google.com/maps/place/10780+Westview+Dr%2C%2C+Houston%2C+TX+77043
+TX,Lumberton,"156 S Main St, Lumberton, TX 77657",$9.99,https://www.anytimemailbox.com/s/lumberton-95b-w-chance-road,https://www.google.com/maps/place/156+S+Main+St%2C+Lumberton%2C+TX+77657
+TX,Conroe,"10160 Hwy 242, Conroe, TX 77385",$14.99,https://www.anytimemailbox.com/s/conroe-10160-highway-242,https://www.google.com/maps/place/10160+Hwy+242%2C+Conroe%2C+TX+77385
+TX,Dallas,"5301 Alpha Rd, Dallas, TX 75240",$14.99,https://www.anytimemailbox.com/s/dallas-5301-alpha-road,https://www.google.com/maps/place/5301+Alpha+Rd%2C+Dallas%2C+TX+75240
+TX,Dallas,"3839 McKinney Avenue, Dallas, TX 75204-1488",$14.99,https://www.anytimemailbox.com/s/dallas-3839-mckinney-avenue,https://www.google.com/maps/place/3839+McKinney+Avenue%2C+Dallas%2C+TX+75204-1488
+TX,"Flower Mound","2450 Lakeside Pkwy, Flower Mound, TX 75022",$14.99,https://www.anytimemailbox.com/s/flower-mound-2450-lakeside-pkwy,https://www.google.com/maps/place/2450+Lakeside+Pkwy%2C+Flower+Mound%2C+TX+75022
+TX,"League City","6011 W Main St, League City, TX 77573",$14.99,https://www.anytimemailbox.com/s/league-city-6011-w-main-street,https://www.google.com/maps/place/6011+W+Main+St%2C+League+City%2C+TX+77573
+TX,Dallas,"701 Commerce St, Dallas, TX 75202",$19.99,https://www.anytimemailbox.com/s/dallas-701-commerce-street,https://www.google.com/maps/place/701+Commerce+St%2C+Dallas%2C+TX+75202
+TX,Houston,"6220 Westpark Dr, Houston, TX 77057",$19.99,https://www.anytimemailbox.com/s/houston-6220-westpark-drive,https://www.google.com/maps/place/6220+Westpark+Dr%2C+Houston%2C+TX+77057
+TX,Austin,"10900 Research Blvd, Austin, TX 78759",$20.00,https://www.anytimemailbox.com/s/austin-10900-research-blvd,https://www.google.com/maps/place/10900+Research+Blvd%2C+Austin%2C+TX+78759
+TX,Dallas,"13155 Noel Road, Dallas, TX 75240",$39.99,https://www.anytimemailbox.com/s/dallas-13155-noel-road,https://www.google.com/maps/place/13155+Noel+Road%2C+Dallas%2C+TX+75240
+TX,"Fort Worth","9500 Ray White Rd, Fort Worth, TX 76244",$39.99,https://www.anytimemailbox.com/s/fort-worth-9500-ray-white-rd,https://www.google.com/maps/place/9500+Ray+White+Rd%2C+Fort+Worth%2C+TX+76244
+TX,Grapevine,"1785 State Hwy 26, Grapevine, TX 76051",$39.99,https://www.anytimemailbox.com/s/grapevine-1785-state-hwy-26,https://www.google.com/maps/place/1785+State+Hwy+26%2C+Grapevine%2C+TX+76051
+VA,Arlington,"1011 Arlington Blvd, Arlington, VA 22209",$14.99,https://www.anytimemailbox.com/s/arlington-1011-arlington-blvd,https://www.google.com/maps/place/1011+Arlington+Blvd%2C+Arlington%2C+VA+22209
+VA,Richmond,"11 S 12th St, Richmond, VA 23219",$19.99,https://www.anytimemailbox.com/s/richmond-11-s-12th-street,https://www.google.com/maps/place/11+S+12th+St%2C+Richmond%2C+VA+23219
+WA,Lacey,"4570 Avery Lane SE, Lacey, WA 98503",$9.99,https://www.anytimemailbox.com/s/lacey-4570-avery-lane-se,https://www.google.com/maps/place/4570+Avery+Lane+SE%2C+Lacey%2C+WA+98503
+WA,Seattle,"4730 University Way NE, Seattle, WA 98105",$14.99,https://www.anytimemailbox.com/s/seattle-4739-university-way-ne,https://www.google.com/maps/place/4730+University+Way+NE%2C+Seattle%2C+WA+98105
+WA,Woodinville,"13110 NE 177th Pl, Woodinville, WA 98072",$14.99,https://www.anytimemailbox.com/s/woodinville-13110-ne-177th-place,https://www.google.com/maps/place/13110+NE+177th+Pl%2C+Woodinville%2C+WA+98072
+WI,Bayside,"333 W Brown Deer Rd, Bayside, WI 53217",$9.99,https://www.anytimemailbox.com/s/bayside-333-w-brown-deer-road,https://www.google.com/maps/place/333+W+Brown+Deer+Rd%2C+Bayside%2C+WI+53217
+WI,"Menomonee Falls","N92W17420 Appleton Ave, Menomonee Falls, WI 53051",$14.99,https://www.anytimemailbox.com/s/menomonee-falls-n92-w17420-appleton-ave,https://www.google.com/maps/place/N92W17420+Appleton+Ave%2C+Menomonee+Falls%2C+WI+53051
+WI,"Mineral Point","104 High St, Mineral Point, WI 53565",$14.99,https://www.anytimemailbox.com/s/mineral-point-104-high-street,https://www.google.com/maps/place/104+High+St%2C+Mineral+Point%2C+WI+53565
+WV,Lewisburg,"3558 N Jefferson St, Lewisburg, WV 24901-9504",$9.99,https://www.anytimemailbox.com/s/lewisburg-3558-n-jefferson-street,https://www.google.com/maps/place/3558+N+Jefferson+St%2C+Lewisburg%2C+WV+24901-9504

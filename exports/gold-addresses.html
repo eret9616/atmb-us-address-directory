@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>ATMB 黄金地址 (CMRA=N + Residential)</title>
+<style>
+  :root {
+    --bg:#0b0d10; --panel:#13171c; --line:#1f242b; --text:#e7ecef;
+    --mute:#8b95a0; --accent:#4cc9f0; --gold:#ffd166;
+    --sales-free:#06d6a0; --income-free:#ffd166; --both-free:#ff6ec7; --pricey:#ef476f;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  header{position:sticky;top:0;z-index:10;background:rgba(11,13,16,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:14px 20px}
+  h1{margin:0 0 8px;font-size:18px}
+  .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .controls input,.controls select{background:var(--panel);border:1px solid var(--line);color:var(--text);padding:6px 10px;border-radius:6px;font:inherit}
+  .controls input:focus,.controls select:focus{outline:none;border-color:var(--accent)}
+  .stats{color:var(--mute);font-size:12px;margin-left:auto}
+  .stats b{color:var(--gold)}
+  main{padding:0 20px 40px}
+  table{width:100%;border-collapse:collapse;margin-top:12px}
+  th{position:sticky;top:84px;background:var(--panel);text-align:left;font-weight:600;padding:10px 12px;border-bottom:1px solid var(--line);cursor:pointer;user-select:none;font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--mute)}
+  th:hover{color:var(--accent)}
+  th .arrow{opacity:.5;margin-left:4px;font-size:10px}
+  td{padding:10px 12px;border-bottom:1px solid var(--line)}
+  tr:hover td{background:var(--panel)}
+  .state{font-weight:600;letter-spacing:.5px}
+  .state.sales-free{color:var(--sales-free)}
+  .state.income-free{color:var(--income-free)}
+  .state.both-free{color:var(--both-free)}
+  .city{color:var(--text)}
+  .addr{color:var(--mute);font-size:13px}
+  .price{font-weight:700;font-variant-numeric:tabular-nums}
+  .price.low{color:var(--sales-free)}
+  .price.high{color:var(--pricey)}
+  a.btn{display:inline-block;padding:5px 10px;margin-right:6px;border-radius:5px;font-size:12px;text-decoration:none;font-weight:600;transition:all .15s}
+  a.atmb{background:#1e2a4b;color:#9cc7ff}
+  a.atmb:hover{background:#2a3a64}
+  a.maps{background:#2a4b1e;color:#a8e58b}
+  a.maps:hover{background:#3a6428}
+  a.street{background:#4b3e1e;color:#ffd9a0}
+  a.street:hover{background:#64502a}
+  .badge{display:inline-block;padding:2px 6px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px;margin-left:4px}
+  .badge.sales-free{background:rgba(6,214,160,.18);color:var(--sales-free);border:1px solid rgba(6,214,160,.35)}
+  .badge.income-free{background:rgba(255,209,102,.15);color:var(--income-free);border:1px solid rgba(255,209,102,.3)}
+  .badge.both-free{background:rgba(255,110,199,.18);color:var(--both-free);border:1px solid rgba(255,110,199,.35)}
+  .badge.west{background:rgba(76,201,240,.15);color:var(--accent);border:1px solid rgba(76,201,240,.3)}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;color:var(--mute);font-size:11px;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+  .legend span{display:inline-flex;align-items:center;gap:5px}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+  tr.hidden{display:none}
+  .empty{text-align:center;color:var(--mute);padding:40px;font-style:italic}
+</style>
+</head>
+<body>
+<header>
+  <h1>🏆 ATMB 黄金地址候选 — CMRA=N + RDI=Residential</h1>
+  <div class="controls">
+    <input id="search" placeholder="搜索 城市 / 地址 / 州..." style="min-width:280px">
+    <select id="stateFilter">
+      <option value="">所有州</option>
+    </select>
+    <select id="taxFilter">
+      <option value="">所有税务</option>
+      <option value="sales-free">🟢 免消费税 (收包裹)</option>
+      <option value="income-free">🟡 免所得税 (银行/居住)</option>
+      <option value="both-free">🩷 两税全免 (NH/AK)</option>
+      <option value="any-free">所有免税州 (任一种)</option>
+      <option value="taxed">两种税都有</option>
+    </select>
+    <select id="regionFilter">
+      <option value="">所有地区</option>
+      <option value="west">西海岸 (WA/OR/CA/AK/HI)</option>
+      <option value="east">东海岸 (NY/NJ/MA/CT/FL...)</option>
+      <option value="south">南部 (TX/FL/GA/TN/NC...)</option>
+      <option value="midwest">中西部 (IL/OH/MO/WI...)</option>
+    </select>
+    <select id="priceFilter">
+      <option value="">所有价格</option>
+      <option value="cheap">≤ $10</option>
+      <option value="mid">$10 - $20</option>
+      <option value="exp">&gt; $20</option>
+    </select>
+    <div class="stats">共 <b id="count">0</b> 条</div>
+  </div>
+  <div class="legend">
+    <span><span class="dot" style="background:var(--sales-free)"></span>免消费税州:OR / NH / DE / MT / AK — 收包裹避开 sales tax</span>
+    <span><span class="dot" style="background:var(--income-free)"></span>免个人所得税州:AK / FL / NV / SD / TN / TX / WA / WY / NH — 当居住地址用</span>
+    <span><span class="dot" style="background:var(--both-free)"></span>两税全免:NH / AK</span>
+  </div>
+</header>
+<main>
+<table id="tbl">
+  <thead>
+    <tr>
+      <th data-sort="state">州 <span class="arrow">⇅</span></th>
+      <th data-sort="city">城市 <span class="arrow">⇅</span></th>
+      <th data-sort="address">地址 <span class="arrow">⇅</span></th>
+      <th data-sort="price">月费 <span class="arrow">⇅</span></th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+<div id="empty" class="empty" style="display:none">没有符合条件的地址</div>
+</main>
+
+<script>
+// 免消费税州(no state sales tax) - 收包裹用
+const SALES_FREE  = ['OR','NH','DE','MT','AK'];
+// 免个人所得税州(no state income tax) - 居住地址/银行用
+const INCOME_FREE = ['AK','FL','NV','SD','TN','TX','WA','WY','NH'];
+// 两税都免 - 顶配
+const BOTH_FREE = SALES_FREE.filter(s => INCOME_FREE.includes(s)); // ['AK','NH']
+// 兼容旧代码:任一类免税
+const TAX_FREE = [...new Set([...SALES_FREE, ...INCOME_FREE])];
+const REGION = {
+  west:    ['WA','OR','CA','AK','HI'],
+  east:    ['NY','NJ','MA','CT','FL','PA','MD','DC','VA','NC','SC','GA','NH','ME','RI','DE'],
+  south:   ['TX','FL','GA','TN','NC','SC','AL','MS','LA','AR','OK','KY','WV','VA'],
+  midwest: ['IL','OH','MO','WI','IN','MI','MN','IA','KS','NE','ND','SD']
+};
+
+const data = [{"state": "AL", "city": "Birmingham", "full_address": "120 19th Street North, Birmingham, AL 35203", "monthly_price": 39.0, "price_text": "Starting from US$ 39.00 / month", "detail_url": "https://www.anytimemailbox.com/s/birmingham-120-19th-street-north"}, {"state": "AR", "city": "Bentonville", "full_address": "1200 SE 14th St, Bentonville, AR 72712", "monthly_price": 11.99, "price_text": "Starting from US$ 11.99 / month", "detail_url": "https://www.anytimemailbox.com/s/bentonville-1200-se-14th-street"}, {"state": "AZ", "city": "Gilbert", "full_address": "1525 S. Higley Rd, Gilbert, AZ 85296", "monthly_price": 16.99, "price_text": "Starting from US$ 16.99 / month", "detail_url": "https://www.anytimemailbox.com/s/gilbert-1525-s-higley-road"}, {"state": "CA", "city": "Anaheim", "full_address": "201 E Center St, Anaheim, CA 92805", "monthly_price": 7.99, "price_text": "Starting from US$ 7.99 / month", "detail_url": "https://www.anytimemailbox.com/s/anaheim-201-e-center-street"}, {"state": "CA", "city": "Irvine", "full_address": "92 Corporate Park, Irvine, CA 92606", "monthly_price": 8.89, "price_text": "Starting from US$ 8.89 / month", "detail_url": "https://www.anytimemailbox.com/s/irvine-92-corporate-park"}, {"state": "CA", "city": "Irvine", "full_address": "17595 Harvard Ave, Irvine, CA 92614", "monthly_price": 8.99, "price_text": "Starting from US$ 8.99 / month", "detail_url": "https://www.anytimemailbox.com/s/irvine-17595-harvard-avenue"}, {"state": "CA", "city": "Arcadia", "full_address": "411 E Huntington Dr, Arcadia, CA 91006", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/arcadia-411-e-huntington-drive"}, {"state": "CA", "city": "Fontana", "full_address": "14050 Cherry Ave, Fontana, CA 92337", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/fontana-14050-cherry-avenue"}, {"state": "CA", "city": "Riverside", "full_address": "19510 Van Buren Blvd, Riverside, CA 92508", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/riverside-19510-van-buren-blvd"}, {"state": "CA", "city": "Temecula", "full_address": "30650 Rancho California Rd, Temecula, CA 92591", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/temecula-30650-rancho-california-road"}, {"state": "CA", "city": "Vista", "full_address": "770 Sycamore Ave, Vista, CA 92083", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/vista-770-sycamore-avenue"}, {"state": "CA", "city": "Arcadia", "full_address": "145 E Duarte Rd, Arcadia, CA 91006", "monthly_price": 11.99, "price_text": "Starting from US$ 11.99 / month", "detail_url": "https://www.anytimemailbox.com/s/arcadia-145-e-duarte-road"}, {"state": "CA", "city": "Bakersfield", "full_address": "6077 Coffee Rd, Bakersfield, CA 93308", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/bakersfield-6077-coffee-road"}, {"state": "CA", "city": "La Jolla", "full_address": "7514 Girard Ave, La Jolla, CA 92037", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/la-jolla-7514-girard-ave"}, {"state": "CA", "city": "San Diego", "full_address": "1501 India St, San Diego, CA 92101", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/san-diego-1501-india-street"}, {"state": "CA", "city": "San Diego", "full_address": "2907 Shelter Island Drive, San Diego, CA 92106", "monthly_price": 15.99, "price_text": "Starting from US$ 15.99 / month", "detail_url": "https://www.anytimemailbox.com/s/san-diego-2907-shelter-island-drive"}, {"state": "CA", "city": "San Diego", "full_address": "1111 6th Ave, San Diego, CA 92101", "monthly_price": 19.99, "price_text": "Starting from US$ 19.99 / month", "detail_url": "https://www.anytimemailbox.com/s/san-diego-1111-6th-ave"}, {"state": "CO", "city": "Denver", "full_address": "2000 S. Colorado Blvd., Denver, CO 80222", "monthly_price": 31.49, "price_text": "Starting from US$ 31.49 / month", "detail_url": "https://www.anytimemailbox.com/s/denver-2000-s-colorado-blvd"}, {"state": "DC", "city": "Washington", "full_address": "1930 18th St NW, Washington, DC 20009", "monthly_price": 14.95, "price_text": "Starting from US$ 14.95 / month", "detail_url": "https://www.anytimemailbox.com/s/washington-1930-18th-street-nw"}, {"state": "DC", "city": "Washington", "full_address": "6218 Georgia Ave N.W., Washington, DC 20011", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/washington-6218-georgia-avenue-nw"}, {"state": "DE", "city": "Wilmington", "full_address": "1401 Pennsylvania Ave, Wilmington, DE 19806", "monthly_price": 8.99, "price_text": "Starting from US$ 8.99 / month", "detail_url": "https://www.anytimemailbox.com/s/wilmington-1401-pennsylvania-ave"}, {"state": "FL", "city": "Boca Raton", "full_address": "8903 Glades Rd, Boca Raton, FL 33434", "monthly_price": 7.99, "price_text": "Starting from US$ 7.99 / month", "detail_url": "https://www.anytimemailbox.com/s/boca-raton-8903-glades-road"}, {"state": "FL", "city": "Lake Worth", "full_address": "8927 Hypoluxo Rd, Lake Worth, FL 33467", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/lake-worth-8927-hypoluxo-road"}, {"state": "FL", "city": "Port Charlotte", "full_address": "2200 Kings Highway, Port Charlotte, FL 33980", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/port-charlotte-2200-kings-highway"}, {"state": "FL", "city": "Port Charlotte", "full_address": "4410 Warren Ave, Port Charlotte, FL 33953", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/port-charlotte-4410-warren-avenue"}, {"state": "FL", "city": "Bradenton", "full_address": "1201 6th Ave W, Bradenton, FL 34205", "monthly_price": 10.0, "price_text": "Starting from US$ 10.00 / month", "detail_url": "https://www.anytimemailbox.com/s/bradenton-1201-6th-avenue-west"}, {"state": "FL", "city": "Miami", "full_address": "14261 SW 120th St, Miami, FL 33186", "monthly_price": 11.99, "price_text": "Starting from US$ 11.99 / month", "detail_url": "https://www.anytimemailbox.com/s/miami-14261-sw-120th-street"}, {"state": "FL", "city": "Ocala", "full_address": "1202 SW 17th St, Ocala, FL 34471", "monthly_price": 11.99, "price_text": "Starting from US$ 11.99 / month", "detail_url": "https://www.anytimemailbox.com/s/ocala-1202-sw-17th-street"}, {"state": "FL", "city": "Largo", "full_address": "7381 114th Ave, Largo, FL 33773", "monthly_price": 13.99, "price_text": "Starting from US$ 13.99 / month", "detail_url": "https://www.anytimemailbox.com/s/largo-7381-114th-avenue"}, {"state": "FL", "city": "Fort Myers", "full_address": "13300 South Cleveland Ave, Fort Myers, FL 33907", "monthly_price": 16.99, "price_text": "Starting from US$ 16.99 / month", "detail_url": "https://www.anytimemailbox.com/s/fort-myers-13300-south-cleveland-avenue"}, {"state": "FL", "city": "Bonita Springs", "full_address": "3250 Bonita Beach Rd, Bonita Springs, FL 34134", "monthly_price": 19.99, "price_text": "Starting from US$ 19.99 / month", "detail_url": "https://www.anytimemailbox.com/s/bonita-springs-3250-bonita-beach-road"}, {"state": "FL", "city": "Sunrise", "full_address": "4300 N University Dr, Sunrise, FL 33351", "monthly_price": 19.99, "price_text": "Starting from US$ 19.99 / month", "detail_url": "https://www.anytimemailbox.com/s/sunrise-4300-n-university-drive"}, {"state": "FL", "city": "Doral", "full_address": "8400 NW 33rd St, Doral, FL 33122", "monthly_price": 29.99, "price_text": "Starting from US$ 29.99 / month", "detail_url": "https://www.anytimemailbox.com/s/doral-8400-nw-33rd-street"}, {"state": "FL", "city": "Palm Beach Gardens", "full_address": "4440 PGA Blvd, Palm Beach Gardens, FL 33410", "monthly_price": 29.99, "price_text": "Starting from US$ 29.99 / month", "detail_url": "https://www.anytimemailbox.com/s/palm-beach-gardens-4440-pga-blvd"}, {"state": "FL", "city": "West Palm Beach", "full_address": "700 S Rosemary Ave, West Palm Beach, FL 33401", "monthly_price": 69.0, "price_text": "Starting from US$ 69.00 / month", "detail_url": "https://www.anytimemailbox.com/s/west-palm-beach-700-s-rosemary-ave"}, {"state": "GA", "city": "Columbus", "full_address": "4519 Woodruff Rd, Columbus, GA 31904", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/columbus-4519-woodruff-road"}, {"state": "GA", "city": "Morrow", "full_address": "2250 Lake Harbin Rd, Morrow, GA 30260", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/morrow-2250-lake-harbin-road"}, {"state": "GA", "city": "Atlanta", "full_address": "1700 Northside Drive, Atlanta, GA 30318", "monthly_price": 11.99, "price_text": "Starting from US$ 11.99 / month", "detail_url": "https://www.anytimemailbox.com/s/atlanta-1700-northside-drive"}, {"state": "GA", "city": "Atlanta", "full_address": "300 Peachtree St NE, Atlanta, GA 30308", "monthly_price": 12.99, "price_text": "Starting from US$ 12.99 / month", "detail_url": "https://www.anytimemailbox.com/s/atlanta-300-peachtree-street-ne"}, {"state": "GA", "city": "Atlanta", "full_address": "245 N Highland Ave NE, Atlanta, GA 30307", "monthly_price": 22.99, "price_text": "Starting from US$ 22.99 / month", "detail_url": "https://www.anytimemailbox.com/s/atlanta-245-n-highland-ave"}, {"state": "IL", "city": "Westmont", "full_address": "36 North Cass Ave, Westmont, IL 60559", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/westmont-36-north-cass-ave"}, {"state": "IL", "city": "Tinley Park", "full_address": "16649 Oak Park Ave, Tinley Park, IL 60477", "monthly_price": 11.99, "price_text": "Starting from US$ 11.99 / month", "detail_url": "https://www.anytimemailbox.com/s/tinley-park-16649-oak-park-ave"}, {"state": "IL", "city": "Chicago", "full_address": "6641 W Belmont Ave, Chicago, IL 60634", "monthly_price": 12.99, "price_text": "Starting from US$ 12.99 / month", "detail_url": "https://www.anytimemailbox.com/s/chicago-6641-belmont-avenue"}, {"state": "IL", "city": "Chicago", "full_address": "211 W Wacker Dr, Chicago, IL 60606", "monthly_price": 14.95, "price_text": "Starting from US$ 14.95 / month", "detail_url": "https://www.anytimemailbox.com/s/chicago-211-w-wacker-drive-suite-120"}, {"state": "IL", "city": "Chicago", "full_address": "3838 N Ravenswood Ave, Chicago, IL 60613", "monthly_price": 19.99, "price_text": "Starting from US$ 19.99 / month", "detail_url": "https://www.anytimemailbox.com/s/chicago-3838-n-ravenswood-ave"}, {"state": "IL", "city": "Chicago", "full_address": "211 W Wacker Dr, Chicago, IL 60606", "monthly_price": 19.99, "price_text": "Starting from US$ 19.99 / month", "detail_url": "https://www.anytimemailbox.com/s/chicago-211-w-wacker-drive-suite-300"}, {"state": "IL", "city": "Danville", "full_address": "2 E Main St, Danville, IL 61832", "monthly_price": 24.99, "price_text": "Starting from US$ 24.99 / month", "detail_url": "https://www.anytimemailbox.com/s/danville-2-e-main-street"}, {"state": "IL", "city": "Deerfield", "full_address": "570 Lake Cook Rd, Deerfield, IL 60015", "monthly_price": 64.99, "price_text": "Starting from US$ 64.99 / month", "detail_url": "https://www.anytimemailbox.com/s/deerfield-570-lake-cook-road"}, {"state": "LA", "city": "Baton Rouge", "full_address": "440 3rd St, Baton Rouge, LA 70802", "monthly_price": 39.0, "price_text": "Starting from US$ 39.00 / month", "detail_url": "https://www.anytimemailbox.com/s/baton-rouge-440-3rd-street"}, {"state": "MA", "city": "Worcester", "full_address": "100 Front St, Worcester, MA 01608", "monthly_price": 49.99, "price_text": "Starting from US$ 49.99 / month", "detail_url": "https://www.anytimemailbox.com/s/worcester-100-front-street"}, {"state": "MD", "city": "Linthicum Heights", "full_address": "1190 Winterson Rd, Linthicum Heights, MD 21090", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/linthicum-heights-1190-winterson-road"}, {"state": "MD", "city": "Baltimore", "full_address": "1400 W. Lombard Street, Baltimore, MD 21223", "monthly_price": 10.99, "price_text": "Starting from US$ 10.99 / month", "detail_url": "https://www.anytimemailbox.com/s/baltimore-1400-w-lombard-street"}, {"state": "MO", "city": "Platte City", "full_address": "1302 Platte Falls Rd, Platte City, MO 64079", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/platte-city-1302-platte-falls-road"}, {"state": "MO", "city": "Kansas City", "full_address": "215 W Pershing Rd, Kansas City, MO 64108", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/kansas-city-215-w-pershing-road"}, {"state": "MS", "city": "Madison", "full_address": "272 Calhoun Station Pkwy, Madison, MS 39110", "monthly_price": 17.99, "price_text": "Starting from US$ 17.99 / month", "detail_url": "https://www.anytimemailbox.com/s/gluckstadt-272-calhoun-station-parkway"}, {"state": "MT", "city": "Bozeman", "full_address": "1800 S 22nd Ave, Bozeman, MT 59718", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/bozeman-1800-s-22nd-avenue"}, {"state": "MT", "city": "Bozeman", "full_address": "40 Spanish Peak Dr, Bozeman, MT 59718", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/bozeman-40-spanish-peak-drive"}, {"state": "NC", "city": "Archdale", "full_address": "313 Trindale Rd, Archdale, NC 27263", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/archdale-313-trindale-road"}, {"state": "NC", "city": "Clayton", "full_address": "63 Sarazen Dr, Clayton, NC 27527", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/clayton-63-sarazen-drive"}, {"state": "NC", "city": "Leland", "full_address": "1108 New Pointe Blvd, Leland, NC 28451", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/leland-1108-new-pointe-blvd"}, {"state": "NC", "city": "Asheville", "full_address": "125 S Lexington Ave, Asheville, NC 28801", "monthly_price": 12.99, "price_text": "Starting from US$ 12.99 / month", "detail_url": "https://www.anytimemailbox.com/s/asheville-125-s-lexington-avenue"}, {"state": "NH", "city": "Laconia", "full_address": "51 Elm St, Laconia, NH 03246", "monthly_price": 39.0, "price_text": "Starting from US$ 39.00 / month", "detail_url": "https://www.anytimemailbox.com/s/laconia-51-elm-street"}, {"state": "NJ", "city": "Robbinsville", "full_address": "2360 Route 33, Robbinsville, NJ 08691", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/robbinsville-2360-route-33"}, {"state": "NJ", "city": "Short Hills", "full_address": "514 Millburn Ave, Short Hills, NJ 07078", "monthly_price": 13.99, "price_text": "Starting from US$ 13.99 / month", "detail_url": "https://www.anytimemailbox.com/s/short-hills-514-millburn-avenue"}, {"state": "NJ", "city": "North Brunswick", "full_address": "643 Georges Rd, North Brunswick, NJ 08902", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/north-brunswick-643-georges-rd"}, {"state": "NJ", "city": "Elizabeth", "full_address": "1077 North Ave, Elizabeth, NJ 07201", "monthly_price": 19.99, "price_text": "Starting from US$ 19.99 / month", "detail_url": "https://www.anytimemailbox.com/s/elizabeth-1077-north-avenue"}, {"state": "NJ", "city": "Matawan", "full_address": "100 Matawan Rd, Matawan, NJ 07747", "monthly_price": 19.99, "price_text": "Starting from US$ 19.99 / month", "detail_url": "https://www.anytimemailbox.com/s/matawan-100-matawan-road"}, {"state": "NY", "city": "Port Washington", "full_address": "191 Main Street, Port Washington, NY 11050", "monthly_price": 8.99, "price_text": "Starting from US$ 8.99 / month", "detail_url": "https://www.anytimemailbox.com/s/port-washington-191-main-street"}, {"state": "NY", "city": "Astoria", "full_address": "2509 Astoria Blvd, Astoria, NY 11102", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/astoria-2509-astoria-boulevard"}, {"state": "NY", "city": "Brewster", "full_address": "12 Main St, Brewster, NY 10509", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/brewster-12-main-street"}, {"state": "NY", "city": "Little Neck", "full_address": "248-25 Northern Blvd, Little Neck, NY 11362", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/little-neck-248-25-northern-blvd"}, {"state": "NY", "city": "Long Island City", "full_address": "3164 21st St, Long Island City, NY 11106", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/long-island-city-3164-21st-street"}, {"state": "NY", "city": "New York", "full_address": "1648 Amsterdam Avenue, New York, NY 10031", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/new-york-1648-amsterdam-avenue"}, {"state": "NY", "city": "Brooklyn", "full_address": "697 Grand St, Brooklyn, NY 11211", "monthly_price": 11.99, "price_text": "Starting from US$ 11.99 / month", "detail_url": "https://www.anytimemailbox.com/s/brooklyn-697-grand-st"}, {"state": "NY", "city": "Brooklyn", "full_address": "285 Nostrand Ave, Brooklyn, NY 11216", "monthly_price": 11.99, "price_text": "Starting from US$ 11.99 / month", "detail_url": "https://www.anytimemailbox.com/s/brooklyn-285-nostrand-avenue"}, {"state": "NY", "city": "Brooklyn", "full_address": "367 St Marks Ave, Brooklyn, NY 11238", "monthly_price": 12.5, "price_text": "Starting from US$ 12.50 / month", "detail_url": "https://www.anytimemailbox.com/s/brooklyn-367-st-marks-avenue"}, {"state": "NY", "city": "Astoria", "full_address": "2810 23rd Ave, Astoria, NY 11105", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/astoria-2810-23rd-avenue"}, {"state": "NY", "city": "Brooklyn", "full_address": "223 Bedford Ave, Brooklyn, NY 11211", "monthly_price": 18.99, "price_text": "Starting from US$ 18.99 / month", "detail_url": "https://www.anytimemailbox.com/s/brooklyn-223-bedford-avenue"}, {"state": "NY", "city": "Bronx", "full_address": "1450 Allerton Ave, Bronx, NY 10469", "monthly_price": 19.99, "price_text": "Starting from US$ 19.99 / month", "detail_url": "https://www.anytimemailbox.com/s/bronx-1450-allerton-avenue"}, {"state": "NY", "city": "Bronx", "full_address": "1490 Crotona Park E, Bronx, NY 10460", "monthly_price": 19.99, "price_text": "Starting from US$ 19.99 / month", "detail_url": "https://www.anytimemailbox.com/s/bronx-1490-crotona-park-e"}, {"state": "NY", "city": "Brooklyn", "full_address": "238 Wilson Ave, Brooklyn, NY 11237", "monthly_price": 19.99, "price_text": "Starting from US$ 19.99 / month", "detail_url": "https://www.anytimemailbox.com/s/brooklyn-238-wilson-avenue"}, {"state": "NY", "city": "New York", "full_address": "2196 Third Ave, New York, NY 10035", "monthly_price": 24.99, "price_text": "Starting from US$ 24.99 / month", "detail_url": "https://www.anytimemailbox.com/s/new-york-2196-third-avenue"}, {"state": "NY", "city": "Brooklyn", "full_address": "495 Henry St, Brooklyn, NY 11231", "monthly_price": 33.33, "price_text": "Starting from US$ 399.99 / year", "detail_url": "https://www.anytimemailbox.com/s/brooklyn-495a-henry-street"}, {"state": "NY", "city": "New York", "full_address": "45 Rockefeller Plaza, New York, NY 10111", "monthly_price": 49.0, "price_text": "Starting from US$ 49.00 / month", "detail_url": "https://www.anytimemailbox.com/s/new-york-rockefeller-center-45-rockefeller-plaza"}, {"state": "NY", "city": "New York", "full_address": "152 E 118th St, New York, NY 10001", "monthly_price": 49.99, "price_text": "Starting from US$ 49.99 / month", "detail_url": "https://www.anytimemailbox.com/s/new-york-152-e-118th-st"}, {"state": "OH", "city": "Dublin", "full_address": "6605 Longshore Street, Dublin, OH 43017-2774", "monthly_price": 19.99, "price_text": "Starting from US$ 19.99 / month", "detail_url": "https://www.anytimemailbox.com/s/dublin-6605-longshore-street"}, {"state": "OR", "city": "Tigard", "full_address": "16200 SW Pacific Hwy, Tigard, OR 97224", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/tigard-16200-sw-pacific-highway"}, {"state": "PA", "city": "Philadelphia", "full_address": "632 N 2nd St, Philadelphia, PA 19123", "monthly_price": 10.99, "price_text": "Starting from US$ 10.99 / month", "detail_url": "https://www.anytimemailbox.com/s/philadelphia-632-n-2nd-street"}, {"state": "PA", "city": "Philadelphia", "full_address": "5944 Ogontz Ave, Philadelphia, PA 19141", "monthly_price": 11.99, "price_text": "Starting from US$ 11.99 / month", "detail_url": "https://www.anytimemailbox.com/s/philadelphia-5944-ogontz-ave"}, {"state": "PR", "city": "Fajardo", "full_address": "410 Avenida Montesol, Fajardo, PR 00738", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/fajardo-410-avenida-montesol"}, {"state": "SC", "city": "Fort Mill", "full_address": "3160 Hwy 21, Fort Mill, SC 29715", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/fort-mill-3160-hwy-21"}, {"state": "TN", "city": "Knoxville", "full_address": "9111 Cross Park Dr, Knoxville, TN 37923", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/knoxville-9111-cross-park-drive"}, {"state": "TX", "city": "Allen", "full_address": "1314 W McDermott Dr, Allen, TX 75013", "monthly_price": 9.98, "price_text": "Starting from US$ 9.98 / month", "detail_url": "https://www.anytimemailbox.com/s/allen-1314-w-mcdermott-drive"}, {"state": "TX", "city": "Houston", "full_address": "10780 Westview Dr,, Houston, TX 77043", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/houston-10780-westview-drive"}, {"state": "TX", "city": "Lumberton", "full_address": "156 S Main St, Lumberton, TX 77657", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/lumberton-95b-w-chance-road"}, {"state": "TX", "city": "Conroe", "full_address": "10160 Hwy 242, Conroe, TX 77385", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/conroe-10160-highway-242"}, {"state": "TX", "city": "Dallas", "full_address": "5301 Alpha Rd, Dallas, TX 75240", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/dallas-5301-alpha-road"}, {"state": "TX", "city": "Dallas", "full_address": "3839 McKinney Avenue, Dallas, TX 75204-1488", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/dallas-3839-mckinney-avenue"}, {"state": "TX", "city": "Flower Mound", "full_address": "2450 Lakeside Pkwy, Flower Mound, TX 75022", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/flower-mound-2450-lakeside-pkwy"}, {"state": "TX", "city": "League City", "full_address": "6011 W Main St, League City, TX 77573", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/league-city-6011-w-main-street"}, {"state": "TX", "city": "Dallas", "full_address": "701 Commerce St, Dallas, TX 75202", "monthly_price": 19.99, "price_text": "Starting from US$ 19.99 / month", "detail_url": "https://www.anytimemailbox.com/s/dallas-701-commerce-street"}, {"state": "TX", "city": "Houston", "full_address": "6220 Westpark Dr, Houston, TX 77057", "monthly_price": 19.99, "price_text": "Starting from US$ 19.99 / month", "detail_url": "https://www.anytimemailbox.com/s/houston-6220-westpark-drive"}, {"state": "TX", "city": "Austin", "full_address": "10900 Research Blvd, Austin, TX 78759", "monthly_price": 20.0, "price_text": "Starting from US$ 20.00 / month", "detail_url": "https://www.anytimemailbox.com/s/austin-10900-research-blvd"}, {"state": "TX", "city": "Dallas", "full_address": "13155 Noel Road, Dallas, TX 75240", "monthly_price": 39.99, "price_text": "Starting from US$ 39.99 / month", "detail_url": "https://www.anytimemailbox.com/s/dallas-13155-noel-road"}, {"state": "TX", "city": "Fort Worth", "full_address": "9500 Ray White Rd, Fort Worth, TX 76244", "monthly_price": 39.99, "price_text": "Starting from US$ 39.99 / month", "detail_url": "https://www.anytimemailbox.com/s/fort-worth-9500-ray-white-rd"}, {"state": "TX", "city": "Grapevine", "full_address": "1785 State Hwy 26, Grapevine, TX 76051", "monthly_price": 39.99, "price_text": "Starting from US$ 39.99 / month", "detail_url": "https://www.anytimemailbox.com/s/grapevine-1785-state-hwy-26"}, {"state": "VA", "city": "Arlington", "full_address": "1011 Arlington Blvd, Arlington, VA 22209", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/arlington-1011-arlington-blvd"}, {"state": "VA", "city": "Richmond", "full_address": "11 S 12th St, Richmond, VA 23219", "monthly_price": 19.99, "price_text": "Starting from US$ 19.99 / month", "detail_url": "https://www.anytimemailbox.com/s/richmond-11-s-12th-street"}, {"state": "WA", "city": "Lacey", "full_address": "4570 Avery Lane SE, Lacey, WA 98503", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/lacey-4570-avery-lane-se"}, {"state": "WA", "city": "Seattle", "full_address": "4730 University Way NE, Seattle, WA 98105", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/seattle-4739-university-way-ne"}, {"state": "WA", "city": "Woodinville", "full_address": "13110 NE 177th Pl, Woodinville, WA 98072", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/woodinville-13110-ne-177th-place"}, {"state": "WI", "city": "Bayside", "full_address": "333 W Brown Deer Rd, Bayside, WI 53217", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/bayside-333-w-brown-deer-road"}, {"state": "WI", "city": "Menomonee Falls", "full_address": "N92W17420 Appleton Ave, Menomonee Falls, WI 53051", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/menomonee-falls-n92-w17420-appleton-ave"}, {"state": "WI", "city": "Mineral Point", "full_address": "104 High St, Mineral Point, WI 53565", "monthly_price": 14.99, "price_text": "Starting from US$ 14.99 / month", "detail_url": "https://www.anytimemailbox.com/s/mineral-point-104-high-street"}, {"state": "WV", "city": "Lewisburg", "full_address": "3558 N Jefferson St, Lewisburg, WV 24901-9504", "monthly_price": 9.99, "price_text": "Starting from US$ 9.99 / month", "detail_url": "https://www.anytimemailbox.com/s/lewisburg-3558-n-jefferson-street"}];
+
+let sortKey='state', sortDir=1;
+
+const tbody = document.getElementById('tbody');
+const stateFilter = document.getElementById('stateFilter');
+const taxFilter = document.getElementById('taxFilter');
+const regionFilter = document.getElementById('regionFilter');
+const priceFilter = document.getElementById('priceFilter');
+const search = document.getElementById('search');
+const count = document.getElementById('count');
+const empty = document.getElementById('empty');
+
+function taxTag(s){
+  const sf = SALES_FREE.includes(s), inf = INCOME_FREE.includes(s);
+  if (sf && inf) return ' 🩷 两税免';
+  if (sf)  return ' 🟢 免消费税';
+  if (inf) return ' 🟡 免所得税';
+  return '';
+}
+
+// build state options
+const states = [...new Set(data.map(d=>d.state))].sort();
+for (const s of states) {
+  const o = document.createElement('option');
+  o.value = s; o.textContent = s + taxTag(s);
+  stateFilter.appendChild(o);
+}
+
+function priceClass(p){
+  if (p <= 10) return 'low';
+  if (p > 25) return 'high';
+  return '';
+}
+
+function gmapsUrl(addr){
+  return 'https://www.google.com/maps/place/' + encodeURIComponent(addr);
+}
+function streetUrl(addr){
+  return 'https://www.google.com/maps?q=&layer=c&cbll=&q=' + encodeURIComponent(addr);
+}
+
+function render(){
+  const q = search.value.trim().toLowerCase();
+  const fs = stateFilter.value;
+  const ft = taxFilter.value;
+  const fr = regionFilter.value;
+  const fp = priceFilter.value;
+
+  let rows = data.filter(d=>{
+    if (fs && d.state !== fs) return false;
+    if (ft === 'sales-free'  && !SALES_FREE.includes(d.state)) return false;
+    if (ft === 'income-free' && !INCOME_FREE.includes(d.state)) return false;
+    if (ft === 'both-free'   && !BOTH_FREE.includes(d.state)) return false;
+    if (ft === 'any-free'    && !TAX_FREE.includes(d.state)) return false;
+    if (ft === 'taxed'       && TAX_FREE.includes(d.state)) return false;
+    if (fr && !(REGION[fr]||[]).includes(d.state)) return false;
+    if (fp === 'cheap' && d.monthly_price > 10) return false;
+    if (fp === 'mid' && (d.monthly_price <= 10 || d.monthly_price > 20)) return false;
+    if (fp === 'exp' && d.monthly_price <= 20) return false;
+    if (q && !(d.state.toLowerCase().includes(q) || d.city.toLowerCase().includes(q) || d.full_address.toLowerCase().includes(q))) return false;
+    return true;
+  });
+
+  rows.sort((a,b)=>{
+    let A,B;
+    if (sortKey === 'price') { A=a.monthly_price; B=b.monthly_price; }
+    else if (sortKey === 'address') { A=a.full_address; B=b.full_address; }
+    else { A=a[sortKey]; B=b[sortKey]; }
+    if (A < B) return -1*sortDir;
+    if (A > B) return 1*sortDir;
+    return 0;
+  });
+
+  count.textContent = rows.length;
+  tbody.innerHTML = '';
+  if (rows.length === 0) { empty.style.display='block'; return; } else empty.style.display='none';
+
+  for (const d of rows) {
+    const tr = document.createElement('tr');
+    const sf  = SALES_FREE.includes(d.state);
+    const inf = INCOME_FREE.includes(d.state);
+    const both = sf && inf;
+    const stateClass = both ? 'both-free' : sf ? 'sales-free' : inf ? 'income-free' : '';
+    const isWest = REGION.west.includes(d.state);
+    tr.innerHTML = `
+      <td class="state ${stateClass}">
+        ${d.state}
+        ${both?'<span class="badge both-free">两税免</span>':
+          sf?'<span class="badge sales-free">免消费税</span>':
+          inf?'<span class="badge income-free">免所得税</span>':''}
+        ${isWest?'<span class="badge west">西岸</span>':''}
+      </td>
+      <td class="city">${d.city}</td>
+      <td class="addr">${d.full_address}</td>
+      <td class="price ${priceClass(d.monthly_price)}">$${d.monthly_price.toFixed(2)}</td>
+      <td>
+        <a class="btn maps" href="${gmapsUrl(d.full_address)}" target="_blank">🗺️ 地图</a>
+        <a class="btn street" href="${streetUrl(d.full_address)}" target="_blank">📷 街景</a>
+        <a class="btn atmb" href="${d.detail_url}" target="_blank">🏠 ATMB</a>
+      </td>`;
+    tbody.appendChild(tr);
+  }
+}
+
+document.querySelectorAll('th[data-sort]').forEach(th=>{
+  th.addEventListener('click',()=>{
+    const k = th.dataset.sort;
+    if (sortKey === k) sortDir = -sortDir; else { sortKey=k; sortDir=1; }
+    render();
+  });
+});
+
+[search, stateFilter, taxFilter, regionFilter, priceFilter].forEach(el => el.addEventListener('input', render));
+
+render();
+</script>
+</body>
+</html>
